@@ -1,23 +1,29 @@
 package pl.kinga.tasks;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-public class ToDoList {
+public class Task {
 
     @Id
     @GeneratedValue
     private long id;
+
+    @Column
+    @Lob
     private String taskName;
+
+    @Column
     private boolean done;
+
+    @Column
     private LocalDate deadline;
 
-    ToDoList() {}
+    Task() {
+    }
 
-    public ToDoList(long id, String taskName, boolean done, LocalDate deadline) {
+    public Task(long id, String taskName, boolean done, LocalDate deadline) {
         this.id = id;
         this.taskName = taskName;
         this.done = done;
