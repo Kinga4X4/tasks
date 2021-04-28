@@ -1,4 +1,6 @@
-package pl.kinga.tasks;
+package pl.kinga.task;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -7,27 +9,32 @@ import java.time.LocalDate;
 public class Task {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column
+    @Column(length = 20, nullable = false)
     @Lob
     private String taskName;
 
     @Column
     private boolean done;
 
-    @Column
+    @Column(nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate deadline;
+
+    @Enumerated(EnumType.STRING)
+    private Category category;
 
     Task() {
     }
 
-    public Task(long id, String taskName, boolean done, LocalDate deadline) {
+    public Task(long id, String taskName, boolean done, LocalDate deadline, Category category) {
         this.id = id;
         this.taskName = taskName;
         this.done = done;
         this.deadline = deadline;
+        this.category = category;
     }
 
     public long getId() {
@@ -62,8 +69,16 @@ public class Task {
         this.deadline = deadline;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
-        return id + " " + taskName + " " + done + " " + deadline;
+        return id + " " + taskName + " " + done + " " + deadline + " " + category;
     }
 }
