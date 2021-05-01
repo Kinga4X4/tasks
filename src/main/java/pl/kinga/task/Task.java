@@ -13,7 +13,6 @@ public class Task {
     private long id;
 
     @Column(length = 20, nullable = false)
-    @Lob
     private String taskName;
 
     @Column

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj zadanie</title>
+</head>
+<body>
+
+<H1 ALIGN="CENTER">Zaplanuj zadanie do wykonania</H1>
+
+<FORM ACTION='#' th:action="@{/create}" th:object= "${tasks}" METHOD="get">
+    Nazwa:<INPUT TYPE="TEXT" th:field="*${taskName}"><BR>
+    Czy już wykonano(true/false)<INPUT TYPE="TEXT" th:field="*${done}"><BR>
+    Termin:<INPUT TYPE="TEXT" th:field="*${deadline}" ><BR>
+    Kategoria<INPUT TYPE="TEXT" th:field="*${category}"><BR>
+
+    <INPUT TYPE="SUBMIT" VALUE="Wyslij">
+</FORM>
+
+</body>
+</html>
+
