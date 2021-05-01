@@ -21,7 +21,7 @@ public class TaskController {
 
     @GetMapping("/home")
     @ResponseBody
-    public String home(Model model, Task task) {
+    public String home(Model model) {
         List<Task> allTasks = taskRepository.findAll();
         model.addAttribute("tasks", allTasks);
         return "home";
@@ -30,8 +30,6 @@ public class TaskController {
     private void find() {
         List<Task> doneTasks = taskRepository.findByDoneTrue();
     }
-
-
 
     @GetMapping("/create")
     public String create() {
