@@ -22,17 +22,23 @@ public class TaskController {
     }
 
     @GetMapping("/")
-    public String home(Model model) {
-        List<Task> allTasks = taskRepository.findByDoneTrue();
-        model.addAttribute("allTasks", allTasks);
+    public String home() {
         return "home";
     }
 
+
+    @GetMapping("/toDo")
+    public String toDo(Model model) {
+        List<Task> allTasks = taskRepository.findByDoneTrue();
+        model.addAttribute("allTasks", allTasks);
+        return "toDo";
+    }
+
     @GetMapping("/done")
-    public String home2(Model model) {
+    public String done(Model model) {
         List<Task> doneTasks = taskRepository.findByDoneFalse();
         model.addAttribute("doneTasks", doneTasks);
-        return "home2";
+        return "done";
     }
 
 
