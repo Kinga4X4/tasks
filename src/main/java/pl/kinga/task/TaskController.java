@@ -1,17 +1,19 @@
 package pl.kinga.task;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
+@RequestMapping
 public class TaskController {
 
     private TaskRepository taskRepository;
+    private List<Task> tasks;
 
     @Autowired
     public TaskController(TaskRepository taskRepository) {
@@ -19,33 +21,51 @@ public class TaskController {
         this.taskRepository = taskRepository;
     }
 
-    @GetMapping("/home")
-    @ResponseBody
+    @GetMapping("/")
     public String home(Model model) {
-        List<Task> allTasks = taskRepository.findAll();
-        model.addAttribute("tasks", allTasks);
+        List<Task> allTasks = taskRepository.findByDoneTrue();
+        model.addAttribute("allTasks", allTasks);
         return "home";
     }
 
-    private void find() {
-        List<Task> doneTasks = taskRepository.findByDoneTrue();
+    @GetMapping("/done")
+    public String home2(Model model) {
+        List<Task> doneTasks = taskRepository.findByDoneFalse();
+        model.addAttribute("doneTasks", doneTasks);
+        return "home2";
     }
 
-    @GetMapping("/create")
-    public String create() {
-        return "create";
-    }
 
-    @PostMapping
-    public String create(Task task) {
-        return "redirect";
-    }
+//    @PostMapping
+//    public String addTask(@RequestBody Task task) {
+//        return "create";
+//    }
+//
 
-//    @GetMapping("/createView")
+//    @PostMapping()
+//    public String create(Task task) {
+//        taskRepository.save(task);
+//        return "redirect:/tasks";
+//    }
+//
+//
+//
+//    private void find() {
+//        List<Task> doneTasks = taskRepository.findByDoneTrue();
+//    }
+//
+//    @GetMapping("/create")
 //    public String create() {
 //        return "create";
 //    }
-
-
+//
+//
+//
+////    @GetMapping("/createView")
+////    public String create() {
+////        return "create";
+////    }
+//
+//
 }
 

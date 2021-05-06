@@ -14,14 +14,15 @@
 
     <div>
         <h3 style="background-color:navajowhite;">
-            <h2>Lista zadań do wykonania: </h2>
+
+            <h2>Lista zadań już wykonanych: </h2>
 
             <ul class="list-group">
-                <li class="list-group-item" th:each="t: ${allTasks}">
+                <li class="list-group-item" th:each="t: ${doneTasks}">
                     <span th:text="|${t.taskName} ${t.deadline}|"></span>
-                    <input type="checkbox" th:field="*{allTasks}" th:value="${t.done}">
                 </li>
             </ul>
+
         </h3>
     </div>
 

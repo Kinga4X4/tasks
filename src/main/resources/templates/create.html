@@ -9,10 +9,10 @@
 <H1 ALIGN="CENTER">Zaplanuj zadanie do wykonania</H1>
 
 <FORM ACTION='#' th:action="@{/create}" th:object= "${task}" METHOD="post">
-    Nazwa:<INPUT TYPE="TEXT" th:field="*${task_name}"><BR>
-    Czy już wykonano(true/false)<INPUT TYPE="TEXT" th:field="*${done}"><BR>
-    Termin:<INPUT TYPE="TEXT" th:field="*${deadline}" ><BR>
-    Kategoria<INPUT TYPE="TEXT" th:field="*${category}"><BR>
+    Nazwa:<INPUT TYPE="TEXT" th:field="*${task.task_name}"><BR>
+    Czy już wykonano(true/false)<INPUT TYPE="TEXT" th:field="*${task.done}"><BR>
+    Termin:<INPUT TYPE="TEXT" th:field="*${task.deadline}" ><BR>
+    Kategoria<INPUT TYPE="TEXT" th:field="*${task.category}"><BR>
 
     <INPUT TYPE="SUBMIT" VALUE="Wyslij">
 </FORM>
