@@ -3,24 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Firma KSB. Krzysztof Szczecina</title>
+    <title>Zarządzanie zadaniami</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
 
-    </head>
 </head>
 <body>
 
-<div style="background-color: darksalmon;font-family:verdana;font-size:100%;text-align:center;" th:fragment="header">
-<h2>Zarządzaj swoimi zadaniami.</br>
-   Zacznij już dziś! </h2>
-
-<a href="/">strona główna</a>
-<a href="/done">Wykonane zadania</a>
-<a href="/toDo">Zadania do wykonania</a>
-
+<div id="header" th:fragment="header">
+    <h2><br>Zarządzaj swoimi zadaniami.</br>
+        Zacznij już dziś! </h2>
 </div>
 
-<div style="background-color: coral;font-family:verdana;font-size:100%;text-align:center;" th:fragment="footer" >
-    <h4>  <a href="/">Dobrze, że tu trafiłeś!</a> </h4>
+    <div id="linki">
+        <a href="/">strona główna</a>
+        <a href="/done">wykonane zadania</a>
+        <a href="/toDo">zadania do wykonania</a>
+    </div>
+
+<div id= "footer" th:fragment="footer">
+    <h4><a href="/">Dobrze, że tu trafiłeś!</a></h4>
 
 </div>
 </body>
