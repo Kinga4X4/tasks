@@ -27,14 +27,14 @@ public class TaskController {
 
     @GetMapping("/toDo")
     public String toDo(Model model) {
-        List<Task> allTasks = taskRepository.findByDone(true);
+        List<Task> allTasks = taskRepository.findByDoneOrderByDeadlineAsc(false);
         model.addAttribute("allTasks", allTasks);
         return "toDo";
     }
 
     @GetMapping("/done")
     public String done(Model model) {
-        List<Task> doneTasks = taskRepository.findByDone(false);
+        List<Task> doneTasks = taskRepository.findByDoneOrderByDeadlineAsc(true);
         model.addAttribute("doneTasks", doneTasks);
         return "done";
     }

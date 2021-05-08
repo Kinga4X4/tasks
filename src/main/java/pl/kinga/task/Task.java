@@ -14,7 +14,7 @@ public class Task {
 
     private String taskName;
 
-    private Boolean done;
+    private boolean done;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate deadline;
@@ -22,7 +22,7 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private Category category;
 
-    public Task(String taskName, Boolean done, LocalDate deadline, Category category) {
+    public Task(String taskName, boolean done, LocalDate deadline, Category category) {
         this.taskName = taskName;
         this.done = done;
         this.deadline = deadline;
@@ -52,7 +52,7 @@ public class Task {
         return done;
     }
 
-    public void setDone(Boolean done) {
+    public void setDone(boolean done) {
         this.done = done;
     }
 
