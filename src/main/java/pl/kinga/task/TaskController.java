@@ -43,9 +43,12 @@ public class TaskController {
     }
 
     @PostMapping("/create")
-    public String postCreate(Task task) {
-        taskRepository.save(task);
-        return "redirect:/";
+    public String postCreate(@ModelAttribute("task") Task task, BindingResult result) {
+        if (result.hasErrors()) {
+            return "create";
+        } else {
+            return "toDo";
+        }
     }
 
     @GetMapping("/create")
