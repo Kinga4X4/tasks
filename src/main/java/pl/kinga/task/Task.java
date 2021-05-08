@@ -10,13 +10,13 @@ public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(length = 200, nullable = false)
     private String taskName;
 
     @Column
-    private boolean done;
+    private Boolean done;
 
     @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -28,7 +28,7 @@ public class Task {
     Task() {
     }
 
-    public Task(long id, String taskName, boolean done, LocalDate deadline, Category category) {
+    public Task(Long id, String taskName, Boolean done, LocalDate deadline, Category category) {
         this.id = id;
         this.taskName = taskName;
         this.done = done;
@@ -36,11 +36,11 @@ public class Task {
         this.category = category;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -52,11 +52,11 @@ public class Task {
         this.taskName = taskName;
     }
 
-    public boolean isDone() {
+    public Boolean getDone() {
         return done;
     }
 
-    public void setDone(boolean done) {
+    public void setDone(Boolean done) {
         this.done = done;
     }
 
