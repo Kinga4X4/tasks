@@ -3,6 +3,7 @@ package pl.kinga.task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -29,49 +30,31 @@ public class TaskController {
 
     @GetMapping("/toDo")
     public String toDo(Model model) {
-        List<Task> allTasks = taskRepository.findByDoneTrue();
+        List<Task> allTasks = taskRepository.findByDone(true);
         model.addAttribute("allTasks", allTasks);
         return "toDo";
     }
 
     @GetMapping("/done")
     public String done(Model model) {
-        List<Task> doneTasks = taskRepository.findByDoneFalse();
+        List<Task> doneTasks = taskRepository.findByDone(false);
         model.addAttribute("doneTasks", doneTasks);
         return "done";
     }
 
+    @PostMapping("/create")
+    public String postCreate(@ModelAttribute("task") Task task, BindingResult result) {
+        if (result.hasErrors()) {
+            return "create";
+        } else {
+            return "toDo";
+        }
+    }
 
-//    @PostMapping
-//    public String addTask(@RequestBody Task task) {
-//        return "create";
-//    }
-//
-
-//    @PostMapping()
-//    public String create(Task task) {
-//        taskRepository.save(task);
-//        return "redirect:/tasks";
-//    }
-//
-//
-//
-//    private void find() {
-//        List<Task> doneTasks = taskRepository.findByDoneTrue();
-//    }
-//
-//    @GetMapping("/create")
-//    public String create() {
-//        return "create";
-//    }
-//
-//
-//
-////    @GetMapping("/createView")
-////    public String create() {
-////        return "create";
-////    }
-//
-//
+    @GetMapping("/create")
+    public String create(Model model) {
+        model.getAttribute("task", new Task());
+        return "create";
+    }
 }
 

@@ -9,8 +9,5 @@ import java.util.List;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
-    List<Task> findByDoneTrue();
-
-    List<Task> findByDoneFalse();
-
+    List<Task> findByDone(boolean b);
 }

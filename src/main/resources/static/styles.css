@@ -1,0 +1,59 @@
+
+    #header {
+    background-color: lemonchiffon;
+    font-family:verdana;
+    text-align:center;
+    min-width:600px;
+    max-width:1800px
+    margin: 20px 50px 20px 50px
+    padding: 25px;
+    }
+
+    #linki {
+    background-color: darksalmon;
+    color: lemonchiffon;
+    font-family:verdana;
+    font-size:44px;
+    font-size:100%;
+    text-align:center;
+    min-width:600px;
+    max-width:1800px;
+    margin: 20px 70px 20px 70px
+    padding: 25px;
+    }
+
+    #footer {
+    background-color: coral;
+    font-family:verdana;
+    font-size:24px;
+    font-size:100%;
+    text-align:center;
+    min-width:600px;
+    max-width:1800px;
+    margin: 20px 70px 20px 70px ;
+    padding: 25px ;
+    }
+
+    .h3 {
+    background: lightblue;
+    font:verdana;
+    margin:70px;
+     padding: 35px;
+    }
+
+    .h2 {
+    background: tomato;
+    margin:70px;
+    padding: 35px;
+    }
+
+    .toDo {
+    background-color:navajowhite;
+
+    }
+
+    .list-group{
+    background: salmon;
+    padding: 35px;
+    margin: 70px;
+    }

@@ -12,21 +12,15 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 200, nullable = false)
     private String taskName;
 
-    @Column
     private Boolean done;
 
-    @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate deadline;
 
     @Enumerated(EnumType.STRING)
     private Category category;
-
-    Task() {
-    }
 
     public Task(Long id, String taskName, Boolean done, LocalDate deadline, Category category) {
         this.id = id;
@@ -34,6 +28,9 @@ public class Task {
         this.done = done;
         this.deadline = deadline;
         this.category = category;
+    }
+
+    public Task() {
     }
 
     public Long getId() {
