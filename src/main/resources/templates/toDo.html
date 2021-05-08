@@ -14,15 +14,19 @@
 
     <div>
         <h3 style="background-color:navajowhite;">
-            <h2>Lista zadań do wykonania: </h2>
+            <h2 style="background: tomato; margin:70px; padding: 35px;">Lista zadań do wykonania: </h2>
 
-            <ul class="list-group">
+            <ul class="list-group" style="background: salmon ;padding: 35px;margin: 70px;">
                 <li class="list-group-item" th:each="t: ${allTasks}">
                     <span th:text="|${t.taskName} ${t.deadline}|"></span>
                     <input type="checkbox" th:field="*{allTasks}" th:value="${t.done}">
                 </li>
             </ul>
         </h3>
+    </div>
+
+    <div id= "footer" th:fragment="footer">
+        <h4><a href="/">Powrót do strony głównej</a></h4>
     </div>
 
 </body>
