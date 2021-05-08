@@ -22,8 +22,7 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private Category category;
 
-    public Task(Long id, String taskName, Boolean done, LocalDate deadline, Category category) {
-        this.id = id;
+    public Task(String taskName, Boolean done, LocalDate deadline, Category category) {
         this.taskName = taskName;
         this.done = done;
         this.deadline = deadline;

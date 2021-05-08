@@ -9,13 +9,20 @@
 
 <H1 ALIGN="CENTER">Zaplanuj zadanie do wykonania</H1>
 
-<FORM ACTION='#' th:action="@{/create}" th:object= "${task}" METHOD="post">
-    Nazwa:<INPUT TYPE="TEXT" th:field="*${task.task_name}"><BR>
-    Czy już wykonano(true/false)<INPUT TYPE="TEXT" th:field="*${task.done}"><BR>
-    Termin:<INPUT TYPE="TEXT" th:field="*${task.deadline}" ><BR>
-    Kategoria<INPUT TYPE="TEXT" th:field="*${task.category}"><BR>
+<FORM ACTION='#' th:action="@{/save}" th:object= "${task}" METHOD="post">
+    <label for="inputTaskName">Nazwa:</label>
+    <INPUT TYPE="TEXT" th:field="*{taskName}" id="inputTaskName"><BR>
+    <label for="inputDone">Czy już wykonano(true/false)</label>
+    <INPUT TYPE="Checkbox" th:field="*{done}" id="inputDone"><BR>
+    <label for="inputDeadline">Termin:</label>
+    <INPUT TYPE="Date" th:field="*{deadline}" id="inputDeadline" ><BR>
+    <label for="inputCategory">Kategoria:</label>
+    <SELECT id="inputCategory">
+            <option th:value = "${category}" th:each="category:${T(pl.kinga.task.Category).values()}"
+                    th:text = "${category.name()}"></option>
+            </SELECT><BR>
 
-    <INPUT TYPE="SUBMIT" VALUE="Wyslij">
+    <button TYPE="SUBMIT">Wyslij</button>
 </FORM>
 
 <div id= "footer" th:fragment="footer">

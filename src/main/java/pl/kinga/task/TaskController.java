@@ -10,13 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping
 public class TaskController {
 
     private TaskRepository taskRepository;
-    private List<Task> tasks;
 
-    @Autowired
     public TaskController(TaskRepository taskRepository) {
 
         this.taskRepository = taskRepository;
@@ -42,13 +39,10 @@ public class TaskController {
         return "done";
     }
 
-    @PostMapping("/create")
-    public String postCreate(@ModelAttribute("task") Task task, BindingResult result) {
-        if (result.hasErrors()) {
-            return "create";
-        } else {
-            return "toDo";
-        }
+    @PostMapping("/save")
+    public String postCreate(Task task) {
+        taskRepository.save(task);
+        return "redirect:/";
     }
 
     @GetMapping("/create")
