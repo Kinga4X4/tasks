@@ -19,7 +19,9 @@
             <ul class="list-group">
                 <li class="list-group-item" th:each="t: ${allTasks}">
                     <span th:text="|${t.taskName} ${t.deadline}|"></span>
-                    <input type="checkbox" th:field="*{allTasks}" th:value="${t.done}">
+                    <form th:action="|/checked/${t.id}|" method="post">
+                        <input type="checkbox" onchange=submit() th:field="*{allTasks}" th:value="${t.done}">
+                    </form>
                 </li>
             </ul>
     </div>

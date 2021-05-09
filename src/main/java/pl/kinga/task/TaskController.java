@@ -50,5 +50,11 @@ public class TaskController {
         model.addAttribute("task", new Task());
         return "create";
     }
+
+    @PostMapping("/checked/{id}")
+    public String checked(@PathVariable Long id) {
+        taskRepository.update(true, id);
+        return "redirect:/";
+    }
 }
 
