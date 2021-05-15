@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj zadanie</title>
+    <link th:href="@{/styles.css}" rel="stylesheet"/>
+</head>
+<body style="text-align:center">
+
+<H1>Zaplanuj zadanie do wykonania</H1>
+
+<FORM ACTION='#' th:action="@{/save}" method="post" th:object= "${task}">
+    <div>
+        <label for="inputTaskName">Nazwa:</label>
+        <input type="text" th:field= "*{taskName}" class="form-check-input" id="inputTaskName">
+    </div>
+
+    <div>
+        <label for="inputDone">Czy już wykonano(true/false)</label>
+        <input type="checkbox" th:checked="*{done}" id="inputDone">
+    </div>
+
+    <div>
+        <label for="inputDeadline">Termin:</label>
+        <input type="date" id="inputDeadline" th:field="*{deadline}">
+    </div>
+
+    <div>
+        <label for="inputCategory">Kategoria:</label>
+         <SELECT id="inputCategory" th:field="*{category}">
+            <option th:value = "${category}" th:each="category:${T(pl.kinga.task.Category).values()}"
+                    th:text = "${category.name()}"></option>
+            </SELECT>
+    </div>
+    <button TYPE="SUBMIT">Wyślij</button>
+</FORM>
+
+<div id= "footer" th:fragment="footer">
+    <h3><a href="/" style="color:white">Powrót do strony głównej</a></h3>
+</div>
+
+</body>
+</html>
+
